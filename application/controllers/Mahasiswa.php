@@ -14,7 +14,8 @@ class mahasiswa extends CI_Controller{
    
     $data['tbl_mahasiswa'] = $this->m_mahasiswa->getAll();
 
-   	$this->load->view('Mahasiswa/v_index', $data);
+    $this->load->view('template/header2');
+  	$this->load->view('Mahasiswa/v_index', $data);
 }
    public function jurusan()
    {
@@ -23,7 +24,10 @@ class mahasiswa extends CI_Controller{
   
    public function tambah()
    {
-    $this->load->view('mahasiswa/v_tambah');
+
+    $this->load->view('template/header2');
+    $this->load  ->view('mahasiswa/v_tambah');
+    
    }
 
    public function simpan_data()
@@ -68,11 +72,13 @@ class mahasiswa extends CI_Controller{
       );
 
       $where = array(
-          'nim' => $nim);
+       'nim' => $nim);
 
-      $this->m_mahasiswa->update($where,$data,'mahasiswa');
+    
+      $this->m_mahasiswa->update($where,$data, 'mahasiswa');
       redirect('mahasiswa/index');
     }
 
 
 }
+  
